@@ -1,26 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import {
-  Github,
-  Linkedin,
-  ArrowDown,
-  Sparkles,
-  Code2,
-  Database,
-  Palette,
-  MapPin,
-  GraduationCap,
-  Mic,
-  Users,
-  Briefcase,
-} from "lucide-react";
+import { Github, Linkedin, ArrowDown, Sparkles, Code2, Database, Palette, MapPin, GraduationCap, Mic, Users, Briefcase } from "lucide-react";
+import { HeroBlob } from "@/components/portfolio/HeroBlob";
 import { BentoCard } from "@/components/portfolio/BentoCard";
+import { TrackCard } from "@/components/portfolio/TrackCard";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { ContactForm } from "@/components/portfolio/ContactForm";
-import { VisitorMarks } from "@/components/portfolio/VisitorMarks";
-import { SparklesCore } from "@/components/ui/sparkles";
-import { GooeyText } from "@/components/ui/gooey-text-morphing";
-import portrait from "@/assets/advika-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,26 +17,15 @@ export const Route = createFileRoute("/")({
           "Advika — Computer Engineering, Class of 2027 at CEC. Backend systems, algorithms, compiler design — built with an eye for design.",
       },
       { property: "og:title", content: "Advika — CSE @ CEC | Portfolio" },
-      {
-        property: "og:description",
-        content: "Computer Engineering, Class of 2027. Building scalable backend systems with an eye for design.",
-      },
+      { property: "og:description", content: "Computer Engineering, Class of 2027. Building scalable backend systems with an eye for design." },
     ],
   }),
   component: Index,
 });
 
-function Section({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
+function Section({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) {
   return (
-    <section id={id} className={`relative mx-auto max-w-6xl px-5 md:px-8 ${className}`}>
+    <section id={id} className={`mx-auto max-w-6xl px-5 md:px-8 ${className}`}>
       {children}
     </section>
   );
@@ -74,23 +48,10 @@ function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
 
 function Index() {
   return (
-    <main className="relative min-h-screen pb-24 overflow-hidden">
-      {/* global sparkle background */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <SparklesCore
-          className="h-full w-full"
-          background="transparent"
-          particleColor="#f5d0fe"
-          particleDensity={70}
-          minSize={0.4}
-          maxSize={1.2}
-          speed={1.2}
-        />
-      </div>
-
+    <main className="min-h-screen pb-24">
       {/* HERO */}
       <Section className="pt-20 md:pt-28">
-        <div className="grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
+        <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -100,7 +61,6 @@ function Index() {
             >
               <Sparkles className="h-3.5 w-3.5" /> available for collabs & internships
             </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -109,22 +69,10 @@ function Index() {
             >
               Hi, I'm <span className="text-gradient">Advika.</span>
             </motion.h1>
-
-            {/* gooey morphing tagline */}
-            <div className="mt-4 h-14 md:h-16">
-              <GooeyText
-                texts={["computer engineer", "backend tinkerer", "compiler nerd", "RJ at CEC FY", "chai chaser"]}
-                morphTime={1.1}
-                cooldownTime={1.2}
-                className="h-full"
-                textClassName="font-display text-2xl md:text-4xl text-gradient"
-              />
-            </div>
-
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.15 }}
               className="mt-5 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed"
             >
               Computer Engineering · Class of 2027 · Building scalable backend systems with an eye for design.
@@ -133,7 +81,7 @@ function Index() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.25 }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <motion.a
@@ -175,37 +123,7 @@ function Index() {
               </motion.a>
             </motion.div>
           </div>
-
-          {/* portrait */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 80, damping: 14, delay: 0.1 }}
-            className="relative mx-auto w-full max-w-[360px]"
-          >
-            <div
-              aria-hidden
-              className="absolute -inset-6 rounded-[2rem] blur-3xl opacity-70"
-              style={{ background: "var(--gradient-text)" }}
-            />
-            <motion.div
-              whileHover={{ rotate: 0, y: -4 }}
-              animate={{ rotate: -3 }}
-              transition={{ type: "spring", stiffness: 120, damping: 14 }}
-              className="relative rounded-[2rem] glass-strong p-3 glow-ring"
-            >
-              <img
-                src={portrait}
-                alt="Advika portrait"
-                width={1024}
-                height={1024}
-                className="rounded-[1.5rem] w-full h-auto object-cover"
-              />
-              <div className="absolute -bottom-3 -right-3 rounded-full glass-strong px-3 py-1.5 text-[10px] uppercase tracking-[0.2em]">
-                ✦ cec '27
-              </div>
-            </motion.div>
-          </motion.div>
+          <HeroBlob />
         </div>
       </Section>
 
@@ -219,12 +137,10 @@ function Index() {
                 <GraduationCap className="h-3.5 w-3.5" /> bio
               </div>
               <p className="mt-4 font-display text-2xl md:text-3xl leading-snug">
-                Studying B.Tech at <span className="text-gradient">College of Engineering Chengannur</span> — obsessed
-                with algorithmic analysis, compiler design, and clean backend architecture.
+                Studying B.Tech at <span className="text-gradient">College of Engineering Chengannur</span> — obsessed with algorithmic analysis, compiler design, and clean backend architecture.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Off-screen, you'll find me chasing trains and chai across India — every place a new edge case for the
-                city-side of life.
+                Off-screen, you'll find me chasing trains and chai across India — every place a new edge case for the city-side of life.
               </p>
             </div>
             <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
@@ -257,23 +173,7 @@ function Index() {
           </BentoCard>
 
           <BentoCard delay={0.1}>
-            <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              <Sparkles className="h-3.5 w-3.5" /> currently
-            </div>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.16_320)]" />
-                shipping a B+ tree storage engine
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[oklch(0.74_0.14_220)]" />
-                hosting weekly radio at CEC FY
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[oklch(0.82_0.14_100)]" />
-                hunting internships for summer '26
-              </li>
-            </ul>
+            <TrackCard />
           </BentoCard>
         </div>
       </Section>
@@ -289,8 +189,8 @@ function Index() {
             source="https://github.com"
             demo="#"
           >
-            An embedded, lightweight database using B+ trees for indexed lookups and HNSW graphs for vector similarity
-            search. Designed with a strict focus on time-complexity optimization end-to-end.
+            An embedded, lightweight database using B+ trees for indexed lookups and HNSW graphs for vector
+            similarity search. Designed with a strict focus on time-complexity optimization end-to-end.
           </ProjectCard>
           <ProjectCard
             tag="ai · prompt engineering"
@@ -299,8 +199,8 @@ function Index() {
             source="https://github.com"
             demo="#"
           >
-            A dynamic password-generator game built with advanced prompt engineering — the model riffs, you score.
-            Memorable, secure, and weirdly fun.
+            A dynamic password-generator game built with advanced prompt engineering — the model riffs,
+            you score. Memorable, secure, and weirdly fun.
           </ProjectCard>
         </div>
       </Section>
@@ -318,8 +218,7 @@ function Index() {
             {
               icon: <Users className="h-4 w-4" />,
               role: "College Union — Lady Representative",
-              blurb:
-                "Community leadership and student advocacy — making sure every voice on campus lands somewhere it matters.",
+              blurb: "Community leadership and student advocacy — making sure every voice on campus lands somewhere it matters.",
             },
             {
               icon: <Mic className="h-4 w-4" />,
@@ -348,12 +247,6 @@ function Index() {
             </motion.div>
           ))}
         </div>
-      </Section>
-
-      {/* VISITOR MARKS */}
-      <Section className="pt-28 md:pt-40">
-        <SectionTitle kicker="leave your mark" title="The visitor wall" />
-        <VisitorMarks />
       </Section>
 
       {/* CONTACT */}
