@@ -1,4 +1,4 @@
-name: Deploy Full-Stack App
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -28,10 +28,9 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Deploy to Cloudflare
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
-          
+          command: pages deploy dist/client --project-name=advika-portfolio
