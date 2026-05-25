@@ -24,7 +24,7 @@ export const SparklesCore = (props: ParticlesProps) => {
   const generatedId = useId();
 
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
+    initParticlesEngine(async (engine: any) => {
       await loadSlim(engine);
     }).then(() => setInit(true));
   }, []);
