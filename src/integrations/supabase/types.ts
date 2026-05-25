@@ -14,7 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contacts: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      track_of_the_day: {
+        Row: {
+          artist: string
+          cover_url: string | null
+          created_at: string
+          id: string
+          song_title: string
+          spotify_link: string | null
+        }
+        Insert: {
+          artist: string
+          cover_url?: string | null
+          created_at?: string
+          id?: string
+          song_title: string
+          spotify_link?: string | null
+        }
+        Update: {
+          artist?: string
+          cover_url?: string | null
+          created_at?: string
+          id?: string
+          song_title?: string
+          spotify_link?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
