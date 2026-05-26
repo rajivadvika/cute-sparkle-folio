@@ -206,6 +206,12 @@ function Index() {
         </div>
       </Section>
 
+      {/* EXPERIENCE */}
+      <Section className="pt-28 md:pt-40">
+        <SectionTitle kicker="experience" title="Where I've worked" />
+        <ExperienceTimeline />
+      </Section>
+
       {/* LEADERSHIP */}
       <Section className="pt-28 md:pt-40">
         <SectionTitle kicker="leadership · community" title="Beyond the code" />
