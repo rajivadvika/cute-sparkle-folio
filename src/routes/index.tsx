@@ -52,9 +52,11 @@ function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
 
 function Index() {
   return (
-    <main className="min-h-screen pb-24">
+    <main id="top" className="min-h-screen pb-24">
+      <CursorGlow />
+      <Navbar />
       {/* HERO */}
-      <Section className="pt-20 md:pt-28">
+      <Section className="pt-28 md:pt-36">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <motion.div
