@@ -211,6 +211,12 @@ function Index() {
         </div>
       </Section>
 
+      {/* STATS */}
+      <Section className="pt-28 md:pt-40">
+        <SectionTitle kicker="by the numbers" title="A few stats" />
+        <StatsStrip />
+      </Section>
+
       {/* EXPERIENCE */}
       <Section id="experience" className="pt-28 md:pt-40">
         <SectionTitle kicker="experience" title="Where I've worked" />
