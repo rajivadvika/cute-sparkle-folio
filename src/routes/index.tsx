@@ -6,6 +6,7 @@ import { BentoCard } from "@/components/portfolio/BentoCard";
 import { TrackCard } from "@/components/portfolio/TrackCard";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { ContactForm } from "@/components/portfolio/ContactForm";
+import { ExperienceTimeline } from "@/components/portfolio/ExperienceTimeline";
 
 export const Route = createFileRoute("/")({
   head: () => ({
