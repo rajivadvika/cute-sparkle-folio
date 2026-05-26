@@ -85,7 +85,7 @@ function Index() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <motion.a
-                href="https://github.com"
+                href="https://github.com/rajivadvika"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.08, rotate: -4 }}
@@ -97,7 +97,7 @@ function Index() {
                 <Github className="h-5 w-5" />
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/advika-rajiv-299511298/"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.08, rotate: 4 }}
@@ -186,7 +186,7 @@ function Index() {
             tag="systems · databases"
             title="NanoDB"
             accent="pink"
-            source="https://github.com"
+            source="https://github.com/rajivadvika"
             demo="#"
           >
             An embedded, lightweight database using B+ trees for indexed lookups and HNSW graphs for vector
@@ -196,7 +196,7 @@ function Index() {
             tag="ai · prompt engineering"
             title="AI Password Generator"
             accent="cyan"
-            source="https://github.com"
+            source="https://github.com/rajivadvika"
             demo="#"
           >
             A dynamic password-generator game built with advanced prompt engineering — the model riffs,
