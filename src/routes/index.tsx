@@ -6,6 +6,10 @@ import { BentoCard } from "@/components/portfolio/BentoCard";
 import { TrackCard } from "@/components/portfolio/TrackCard";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { ContactForm } from "@/components/portfolio/ContactForm";
+import { ExperienceTimeline } from "@/components/portfolio/ExperienceTimeline";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import { StatsStrip } from "@/components/portfolio/StatsStrip";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,9 +52,11 @@ function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
 
 function Index() {
   return (
-    <main className="min-h-screen pb-24">
+    <main id="top" className="min-h-screen pb-24">
+      <CursorGlow />
+      <Navbar />
       {/* HERO */}
-      <Section className="pt-20 md:pt-28">
+      <Section className="pt-28 md:pt-36">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <motion.div
@@ -128,7 +134,7 @@ function Index() {
       </Section>
 
       {/* ABOUT BENTO */}
-      <Section className="pt-28 md:pt-40">
+      <Section id="about" className="pt-28 md:pt-40">
         <SectionTitle kicker="about · skills · vibe" title="A little about me" />
         <div className="grid gap-5 md:grid-cols-3 md:auto-rows-[200px]">
           <BentoCard className="md:col-span-2 md:row-span-2 flex flex-col justify-between">
@@ -205,8 +211,20 @@ function Index() {
         </div>
       </Section>
 
-      {/* LEADERSHIP */}
+      {/* STATS */}
       <Section className="pt-28 md:pt-40">
+        <SectionTitle kicker="by the numbers" title="A few stats" />
+        <StatsStrip />
+      </Section>
+
+      {/* EXPERIENCE */}
+      <Section id="experience" className="pt-28 md:pt-40">
+        <SectionTitle kicker="experience" title="Where I've worked" />
+        <ExperienceTimeline />
+      </Section>
+
+      {/* LEADERSHIP */}
+      <Section id="leadership" className="pt-28 md:pt-40">
         <SectionTitle kicker="leadership · community" title="Beyond the code" />
         <div className="grid gap-5 md:grid-cols-3">
           {[
@@ -250,7 +268,7 @@ function Index() {
       </Section>
 
       {/* CONTACT */}
-      <Section className="pt-28 md:pt-40">
+      <Section id="contact" className="pt-28 md:pt-40">
         <SectionTitle kicker="get in touch" title="Say hi 👋" />
         <div className="rounded-3xl glass-strong p-6 md:p-10">
           <ContactForm />
