@@ -6,6 +6,7 @@ import { BentoCard } from "@/components/portfolio/BentoCard";
 import { TrackCard } from "@/components/portfolio/TrackCard";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { ContactForm } from "@/components/portfolio/ContactForm";
+import { ExperienceTimeline } from "@/components/portfolio/ExperienceTimeline";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -203,6 +204,12 @@ function Index() {
             you score. Memorable, secure, and weirdly fun.
           </ProjectCard>
         </div>
+      </Section>
+
+      {/* EXPERIENCE */}
+      <Section className="pt-28 md:pt-40">
+        <SectionTitle kicker="experience" title="Where I've worked" />
+        <ExperienceTimeline />
       </Section>
 
       {/* LEADERSHIP */}
