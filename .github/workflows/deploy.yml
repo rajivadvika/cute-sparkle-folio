@@ -1,11 +1,9 @@
-name: Deploy Full-Stack App
+name: Deploy Test Environment
 
 on:
   push:
     branches:
-      - dev
       - test
-      - main
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -33,10 +31,14 @@ jobs:
           echo "VITE_SUPABASE_PUBLISHABLE_KEY=${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}" >> .env
           echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env
 
+      - name: Rename to Test Worker
+        run: |
+          sed -i 's/"name": "cute-sparkle-folio"/"name": "advika-portfolio-test"/' wrangler.json*
+
       - name: Build Project
         run: npm run build
 
-      - name: Deploy to Cloudflare Workers
+      - name: Deploy to Test Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
