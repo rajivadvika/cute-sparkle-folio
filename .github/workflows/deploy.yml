@@ -3,8 +3,6 @@ name: Deploy Full-Stack App
 on:
   push:
     branches:
-      - dev
-      - test
       - main
 
 env:
@@ -54,3 +52,4 @@ jobs:
           VITE_SUPABASE_PROJECT_ID: ${{ secrets.VITE_SUPABASE_PROJECT_ID }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          
