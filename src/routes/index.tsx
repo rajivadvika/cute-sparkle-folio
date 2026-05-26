@@ -7,6 +7,9 @@ import { TrackCard } from "@/components/portfolio/TrackCard";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { ContactForm } from "@/components/portfolio/ContactForm";
 import { ExperienceTimeline } from "@/components/portfolio/ExperienceTimeline";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import { StatsStrip } from "@/components/portfolio/StatsStrip";
 
 export const Route = createFileRoute("/")({
   head: () => ({
