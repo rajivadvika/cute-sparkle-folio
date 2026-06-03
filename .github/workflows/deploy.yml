@@ -23,6 +23,10 @@ jobs:
 
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          # This flag forces the GitHub Action build to fail if SonarCloud's Quality Gate fails
+          args: >
+            -Dsonar.qualitygate.wait=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
