@@ -1,15 +1,41 @@
-name: Deploy Production Environment
+name: CI/CD Pipeline (SonarCloud & Production Deployment)
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
+  # JOB 1: Scan Pull Requests and pushes to ensure code quality
+  sonarcloud:
+    name: SonarCloud Code Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          # This flag forces the GitHub Action build to fail if SonarCloud's Quality Gate fails
+          args: >
+            -Dsonar.qualitygate.wait=true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # JOB 2: Deploy to Cloudflare (Only runs on pushes directly to main)
   deploy:
+    name: Deploy Production Environment
+    needs: sonarcloud # Ensures code passes SonarCloud checks BEFORE deploying
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
